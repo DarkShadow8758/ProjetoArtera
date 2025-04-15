@@ -7,6 +7,8 @@ public class TimeBody : MonoBehaviour
 
     bool isRewinding = false;
     public float recordTime = 5f;
+    [SerializeField] private AudioSource rewindSound;
+    [SerializeField] private AudioClip rewindingSound;
 
     List<PointInTime> pointsInTime;
     Rigidbody rb;
@@ -52,6 +54,12 @@ public class TimeBody : MonoBehaviour
             transform.position = pointInTime.position;
             transform.rotation = pointInTime.rotation;
             pointsInTime.RemoveAt(0);
+            //play sound
+            if (!rewindSound.isPlaying)
+            {
+                rewindSound.clip = rewindingSound;
+                rewindSound.Play();
+            }
             
         }
         else
@@ -77,5 +85,9 @@ public class TimeBody : MonoBehaviour
     public void StopRewind ()
     {
         isRewinding = false;
+        if (rewindSound.isPlaying)
+        {
+            rewindSound.Stop();
+        }
     }
 }
