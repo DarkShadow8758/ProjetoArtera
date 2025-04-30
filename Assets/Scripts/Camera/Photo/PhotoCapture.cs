@@ -12,6 +12,8 @@ public class PhotoCapture : MonoBehaviour
     [Header("Flash Effect")]
     [SerializeField] private GameObject cameraFlash;
     [SerializeField] private float flashTime;
+    [SerializeField] private AudioSource cameraSound;
+    [SerializeField] private AudioClip cameraFlashSound;
 
     [Header("Photo Fader Effect")]
     [SerializeField] private Animator fadingAnimation;
@@ -49,6 +51,7 @@ public class PhotoCapture : MonoBehaviour
         screenCapture.ReadPixels(regionToRead, 0, 0, false);
         screenCapture.Apply();
         ShowPhoto();
+        SavePhotoToDisk();
     }
     void ShowPhoto()
     {
@@ -56,6 +59,7 @@ public class PhotoCapture : MonoBehaviour
         photoDisplayArea.sprite = photoSprite;
 
         photoFrame.SetActive(true);
+        cameraSound.PlayOneShot(cameraFlashSound, 1f);
         //Do flash
         StartCoroutine(CameraFlashEffect());
         fadingAnimation.Play("PhotoFade");
@@ -72,5 +76,34 @@ public class PhotoCapture : MonoBehaviour
         viewingPhoto = false;
         photoFrame.SetActive(false);
         //CameraUI true 
+    }
+    void SavePhotoToDisk()
+    {
+        //convert to png
+        byte[] pngData = screenCapture.EncodeToPNG();
+
+        if (pngData != null)
+        {
+            //define path
+            string folderPath = Application.persistentDataPath + "Photos/PlayerCaptures/SavedPhotos";
+            //in the future, add personal name based in objcet capture
+            string fileName = "Cam_" + System.DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss") + ".png";
+
+            //Create Folder if not exists
+            if (!System.IO.Directory.Exists(folderPath))
+            {
+                System.IO.Directory.CreateDirectory(folderPath);
+            }
+
+            //save png
+            string filePath = System.IO.Path.Combine(folderPath, fileName);
+            System.IO.File.WriteAllBytes(filePath, pngData);
+
+            Debug.Log("Photo saved to: " + filePath);
+        }
+        else
+        {
+            Debug.LogError("Failed to encode the photo to PNG.");
+        }
     }
 }
