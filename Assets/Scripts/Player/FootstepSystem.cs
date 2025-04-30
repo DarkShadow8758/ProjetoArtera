@@ -1,46 +1,34 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FootstepSystem : MonoBehaviour
 {
-    public AudioSource audioSource;
-
-    public AudioClip[] footstepSounds;
-    public AudioClip footstepGround;
-    public AudioClip[] jumpSounds;
-
-    RaycastHit hit;
-    public Transform RayStart;
-    public float range;
-    public LayerMask groundLayer;
-
-    public void Footstep()
+    [Range(0, 20f)]
+    public float frequency = 10.0f;
+    public UnityEvent onFootstepEvent;
+    float Sin;
+    bool isTriggered = false;
+    void Update()
     {
-        if (Physics.Raycast(RayStart.position, Vector3.down, out hit, range, groundLayer))
+        float inputMagnitude = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).magnitude;
+        if (inputMagnitude > 0)
         {
-            switch (hit.collider.tag)
-            {
-                case "ground":
-                    PlayFootstepSoundL(footstepGround);
-                    break;
-                case "water":
-                    // Play water sound
-                    break;
-                case "mud":
-                    // Play mud sound
-                    break;
-                default:
-                    break;
-            }
-            if (hit.collider.CompareTag("ground"))
-            {
-                int randomIndex = Random.Range(0, footstepSounds.Length);
-                audioSource.PlayOneShot(footstepSounds[randomIndex]);
-            }
+            StartFootsteps();
         }
     }
-    void PlayFootstepSoundL(AudioClip audio)
+
+    private void StartFootsteps()
     {
-        audioSource.pitch = Random.Range(0.8f, 1.2f);
-        audioSource.PlayOneShot(audio);
+        Sin = Mathf.Sin(Time.time * frequency);
+        if (Sin > 0.97f && isTriggered == false)
+        {
+            isTriggered = true;
+            Debug.Log("Tic");
+            onFootstepEvent.Invoke();
+        }
+        else if (isTriggered == true && Sin < -0.97f)
+        {
+            isTriggered = false;
+        }
     }
 }

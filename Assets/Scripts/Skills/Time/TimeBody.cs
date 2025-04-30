@@ -75,7 +75,7 @@ public class TimeBody : MonoBehaviour
             pointsInTime.RemoveAt(pointsInTime.Count -1);
         }
         pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
     }
 
     public void StartRewind ()
