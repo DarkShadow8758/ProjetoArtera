@@ -6,9 +6,14 @@ public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private Animator transition;  
     [SerializeField] private float transitionTime = 1f;
+    [SerializeField] private FirstPersonController playerController;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        if (playerController.nextScene)
         {
             LoadNextLevel();
         }
