@@ -1,8 +1,9 @@
 using System;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-    public class FirstPersonController : MonoBehaviour
+public class FirstPersonController : MonoBehaviour
     {
         [Range(0, 100)] public float mouseSensitivity = 25f;
         [Range(0f, 200f)] private float snappiness = 100f;
@@ -57,6 +58,10 @@ using UnityEngine;
         private Vector3 recoil = Vector3.zero;
         private bool isLook = true, isMove = true;
         public bool nextScene = false;
+        
+        //Input
+        private PlayerInput playerInput;
+        private InputAction jumpAction;
 
         public float CurrentCameraHeight => isCrouching || isSliding ? crouchCameraHeight : originalCameraParentHeight;
 
@@ -71,6 +76,10 @@ using UnityEngine;
             slideAudioSource.playOnAwake = false;
             slideAudioSource.loop = false;
             Cursor.lockState = CursorLockMode.Locked;
+            playerInput = GetComponent<PlayerInput>();
+            jumpAction = playerInput.actions["Jump"];
+            jumpAction.ReadValue<float>();
+            DontDestroyOnLoad(gameObject);
         }
 
         private void Update()
