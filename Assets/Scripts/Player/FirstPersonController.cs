@@ -77,8 +77,6 @@ public class FirstPersonController : MonoBehaviour
             slideAudioSource.loop = false;
             Cursor.lockState = CursorLockMode.Locked;
             playerInput = GetComponent<PlayerInput>();
-            jumpAction = playerInput.actions["Jump"];
-            jumpAction.ReadValue<float>();
             DontDestroyOnLoad(gameObject);
         }
 

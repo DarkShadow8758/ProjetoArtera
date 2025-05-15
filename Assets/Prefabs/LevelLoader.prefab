@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 1729679401080517175}
   transitionTime: 1
+  playerController: {fileID: 0}
 --- !u!1 &5208893140815338577
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,7 +67,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &671865860424908814
 RectTransform:
   m_ObjectHideFlags: 0
