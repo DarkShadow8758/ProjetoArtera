@@ -5,6 +5,11 @@ public class CollectCoinsQuestStep : QuestStep
     private int coinsCollected = 0;
     private int coinsToComplete = 5;
 
+    private void Start()
+    {
+        UpdateState();
+    }
+
     private void OnEnable()
     {
         GameEventsManager.instance.miscEvents.onCoinCollected += CoinCollected;
@@ -29,7 +34,8 @@ public class CollectCoinsQuestStep : QuestStep
     private void UpdateState()
     {
         string state = coinsCollected.ToString();
-        ChangeState(state);
+        string status = "Colete " + coinsCollected + " / " + coinsToComplete + " moedas.";
+        ChangeState(state, status);
     }
 
     protected override void SetQuestStepState(string state)

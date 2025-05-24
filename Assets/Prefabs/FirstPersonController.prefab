@@ -671,6 +671,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 028bc927-7999-40b4-9626-f88d67d6752e
     m_ActionName: 'Player/Submit[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3402598584015528552}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: QuestLogTogglePressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3cd7ef19-8cfd-4bc6-bd8c-c2f73e7c2a79
+    m_ActionName: 'Player/QuestLogToggle[/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
