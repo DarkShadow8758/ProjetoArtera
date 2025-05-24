@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class QuestPoint : MonoBehaviour
 {
+    [Header("Dialogue (optional)")]
+    [SerializeField] private string dialogueKnotName;
     [Header("Quest")]
     [SerializeField] private QuestInfoSO questInfoForPoint;
 
@@ -32,22 +34,30 @@ public class QuestPoint : MonoBehaviour
     }
     private void SubmitPressed(InputEventContext inputEventContext)
     {
-        if (!playerIsNear)
+        if (!playerIsNear || !inputEventContext.Equals(InputEventContext.DEFAULT))
         {
             return;
         }
         // GameEventsManager.instance.questEvents.StartQuest(questId);
         // GameEventsManager.instance.questEvents.AdvancedQuest(questId);
         // GameEventsManager.instance.questEvents.FinishQuest(questId);
-
-        //start or finish a quest
-        if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
+        //if we have a knot name defined, try to start dialogue with it 
+        if (!dialogueKnotName.Equals(""))
         {
-            GameEventsManager.instance.questEvents.StartQuest(questId);
+            GameEventsManager.instance.dialogueEvents.EnterDialogue(dialogueKnotName);
         }
-        else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
+        //otherwise, start or finish the quest immediately without dialogue
+        else
         {
-            GameEventsManager.instance.questEvents.FinishQuest(questId);
+             //start or finish a quest
+            if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
+            {
+                GameEventsManager.instance.questEvents.StartQuest(questId);
+            }
+            else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
+            {
+                GameEventsManager.instance.questEvents.FinishQuest(questId);
+            }
         }
     }
     private void QuestStateChange(Quest quest)

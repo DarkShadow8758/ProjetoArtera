@@ -28,12 +28,12 @@ public class InputEvents
         }
     }
 
-    public event Action onQuestLogTogglePressed;
+    public event Action<InputEventContext> onQuestLogTogglePressed;
     public void QuestLogTogglePressed()
     {
         if (onQuestLogTogglePressed != null) 
         {
-            onQuestLogTogglePressed();
+            onQuestLogTogglePressed(this.inputEventContext);
         }
     }
 }
