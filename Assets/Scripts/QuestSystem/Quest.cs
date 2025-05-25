@@ -95,31 +95,32 @@ public class Quest
 
         if (state == QuestState.REQUIREMENTS_NOT_MET)
         {
-            fullStatus = "Requisitos não atingidos para fazer esta missão.";
+            fullStatus = "Requisitos não concluidos para iniciar esta missão.";
         }
         else if (state == QuestState.CAN_START)
         {
-            fullStatus = "Essa missão pode ser iniciada!";
+            fullStatus = "Essa missão pode ser feita!";
         }
-        else
+        else 
         {
-            //display all previous quests with strikethroughs
+            // display all previous quests with strikethroughs
             for (int i = 0; i < currentQuestStepIndex; i++)
             {
                 fullStatus += "<s>" + questStepStates[i].status + "</s>\n";
             }
-            //display the current step, if it exists
+            // display the current step, if it exists
             if (CurrentStepExists())
             {
                 fullStatus += questStepStates[currentQuestStepIndex].status;
             }
+            // when the quest is completed or turned in
             if (state == QuestState.CAN_FINISH)
             {
-                fullStatus = "A missão pode ser finalizada.";
+                fullStatus += "A missão está em progresso.";
             }
             else if (state == QuestState.FINISHED)
             {
-                fullStatus = "A missão foi concluida!";
+                fullStatus += "Essa missão foi concluida!";
             }
         }
 

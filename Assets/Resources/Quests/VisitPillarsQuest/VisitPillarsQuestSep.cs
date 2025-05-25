@@ -15,7 +15,7 @@ public class VisitPillarsQuestSep : QuestStep
     {
         if (other.CompareTag("Player"))
         {
-            string status = "O " + pillarNumbersString + " foi visitado";
+            string status = "O " + pillarNumbersString + " pilar foi visitado";
             ChangeState("", status);
             FinishQuestStep();
         }
