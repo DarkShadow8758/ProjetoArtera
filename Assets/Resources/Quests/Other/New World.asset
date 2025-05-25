@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47d454c76263a444c8c87b7a6c9da21b, type: 3}
-  m_Name: CollectCoinsQuest
+  m_Name: New World
   m_EditorClassIdentifier: 
-  <id>k__BackingField: CollectCoinsQuest
-  displayName: Colete as Moedas!
-  levelRequirement: 1
+  <id>k__BackingField: New World
+  displayName: fe
+  levelRequirement: 0
   questPrerequisites: []
-  questStepPrefabs:
-  - {fileID: 778953955911688501, guid: 45bf9bf26bc76eb429f345485e537c9f, type: 3}
-  goldReward: 50
-  experienceReward: 250
+  questStepPrefabs: []
+  goldReward: 0
+  experienceReward: 0

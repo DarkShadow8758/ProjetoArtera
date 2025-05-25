@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: VisitPillarsQuest
   m_EditorClassIdentifier: 
   <id>k__BackingField: VisitPillarsQuest
-  displayName: Visit the Pillars!
+  displayName: Visite os Locais!
   levelRequirement: 1
   questPrerequisites:
   - {fileID: 11400000, guid: 5549b462687b07c488d992f803a82e1a, type: 2}

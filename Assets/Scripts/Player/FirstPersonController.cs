@@ -77,7 +77,7 @@ public class FirstPersonController : MonoBehaviour
             slideAudioSource.loop = false;
             Cursor.lockState = CursorLockMode.Locked;
             playerInput = GetComponent<PlayerInput>();
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         
         private void OnEnable()
