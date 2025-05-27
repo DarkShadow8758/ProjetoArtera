@@ -7410,6 +7410,10 @@ PrefabInstance:
       propertyPath: m_SubmitAction
       value: 
       objectReference: {fileID: 6232908618136581474, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+    - target: {fileID: 6416568993616460986, guid: eedb31ef535b9d644b687372398826fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7860708288402783440, guid: eedb31ef535b9d644b687372398826fe, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7567,6 +7571,10 @@ PrefabInstance:
     - target: {fileID: 265556314072474084, guid: 6bd92150cb10d144683fb5b416be859d, type: 3}
       propertyPath: m_Name
       value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208893140815338577, guid: 6bd92150cb10d144683fb5b416be859d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5570667267392802257, guid: 6bd92150cb10d144683fb5b416be859d, type: 3}
       propertyPath: playerController
