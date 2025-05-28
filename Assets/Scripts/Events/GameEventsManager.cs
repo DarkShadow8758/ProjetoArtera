@@ -10,10 +10,11 @@ public class GameEventsManager : MonoBehaviour
     public MiscEvents miscEvents;
     public DialogueEvents dialogueEvents;
     public QuestEvents questEvents;
+    public PhotoEvents photoCapture;
 
     public void Awake()
     {
-         if (instance != null)
+        if (instance != null)
         {
             Debug.Log("InstanceActionInvoker is not null, invoking action.");
         }
@@ -26,6 +27,7 @@ public class GameEventsManager : MonoBehaviour
         miscEvents = new MiscEvents();
         dialogueEvents = new DialogueEvents();
         questEvents = new QuestEvents();
+        photoCapture = new PhotoEvents();
 
     } 
    

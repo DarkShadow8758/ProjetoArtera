@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d454c76263a444c8c87b7a6c9da21b, type: 3}
+  m_Name: CubismPhotos
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: CubismPhotos
+  displayName: Tire fotos das obras!
+  levelRequirement: 5
+  questPrerequisites:
+  - {fileID: 11400000, guid: 5549b462687b07c488d992f803a82e1a, type: 2}
+  - {fileID: 11400000, guid: f0c124bd4856fb44d83ccfb4b98d2947, type: 2}
+  questStepPrefabs: []
+  goldReward: 0
+  experienceReward: 0
