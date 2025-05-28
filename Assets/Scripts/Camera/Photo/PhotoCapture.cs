@@ -17,6 +17,8 @@ public class PhotoCapture : MonoBehaviour
 
     [Header("Photo Fader Effect")]
     [SerializeField] private Animator fadingAnimation;
+    [Header("Photo verify")]
+    [SerializeField] private LayerMask photoLayerMask;
     private Texture2D screenCapture;
     private bool viewingPhoto;
 
@@ -45,6 +47,18 @@ public class PhotoCapture : MonoBehaviour
         viewingPhoto = true;
 
         yield return new WaitForEndOfFrame();
+
+         // Raycast do centro da tela
+        Vector3 rayOrigin = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+        Vector3 rayDirection = Camera.main.transform.forward;
+        float rayDistance = 100f;
+
+        if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayDistance, photoLayerMask))
+        {
+            // Dispara o evento do PhotoEvents
+            GameEventsManager.instance.photoCapture.PhotoCapture(true);
+            // Se quiser, pode passar mais informações no evento
+        }
 
         Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
 
